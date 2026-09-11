@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JAZZ EMP vol.9</title>
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex"> <!-- 本公開時にこの行を削除（検索エンジンに載せる） -->
 <meta name="description" content="金融のまち「日本橋兜町」に若手精鋭ミュージシャンが集う。JAZZ EMP vol.9 @TOKYO FINANCIAL STREET。2027年1月31日（日）12:00–18:00、KABUTO ONE 4Fホールにて開催。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,6 +230,7 @@
 </header>
 
 <main id="top">
+  <!-- ▼ ヒーロー（日程・会場・料金の基本情報） -->
   <section class="hero" id="hero">
     <div class="corner tr"><i>Vol.9</i>Tokyo Financial Street</div>
     <div class="wrap">
@@ -261,6 +262,7 @@
       </div>
     </div>
     <div class="ticker" aria-hidden="true">
+      <!-- ▼ ティッカー（流れる文字列）。1行 = 1項目 -->
       <div class="track" id="track">
         <div class="item" lang="ja"><i>▲</i>鈴木真明地<em>SAX</em></div>
         <div class="item" lang="ja"><i>▲</i>菊地立起<em>TP</em></div>
@@ -275,6 +277,7 @@
   </div>
 
   <div class="below">
+  <!-- ▼ ABOUT 紹介文 -->
   <section class="section" id="about">
     <div class="wrap grid">
       <div class="label"><span class="en h">About</span><span class="ja">JAZZ EMPとは</span></div>
@@ -288,6 +291,7 @@
     </div>
   </section>
 
+  <!-- ▼ LINEUP 出演者。1行 = 1組。<li class="act"> をコピーして増やす -->
   <section class="section" id="lineup">
     <div class="wrap grid">
       <div class="label"><span class="en h">Lineup</span><span class="ja">出演</span></div>
@@ -304,6 +308,7 @@
     </div>
   </section>
 
+  <!-- ▼ PROGRAM 時間割。data-t と data-text の両方を直す -->
   <section class="section" id="program">
     <div class="wrap grid">
       <div class="label"><span class="en h">Program</span><span class="ja">プログラム</span></div>
@@ -326,6 +331,7 @@
     </div>
   </section>
 
+  <!-- ▼ TICKET 料金と申込手順。href="#" を teket / STOCKVOICE のURLに差し替える -->
   <section class="section" id="ticket">
     <div class="wrap grid">
       <div class="label"><span class="en h">Ticket</span><span class="ja">チケット</span></div>
@@ -361,6 +367,7 @@
     </div>
   </section>
 
+  <!-- ▼ ACCESS 会場と地図 -->
   <section class="section" id="access">
     <div class="wrap grid">
       <div class="label"><span class="en h">Access</span><span class="ja">会場・アクセス</span></div>
@@ -384,6 +391,7 @@
     </div>
   </section>
 
+  <!-- ▼ NOTICE 注意事項 -->
   <section class="section" id="notice">
     <div class="wrap grid">
       <div class="label"><span class="en h">Notice</span><span class="ja">ご来場にあたって</span></div>
@@ -397,6 +405,7 @@
     </div>
   </section>
 
+  <!-- ▼ NEWS お知らせ。新しいものを上に追加 -->
   <section class="section" id="news">
     <div class="wrap grid">
       <div class="label"><span class="en h">News</span><span class="ja">お知らせ</span></div>
@@ -409,6 +418,7 @@
     </div>
   </section>
 
+  <!-- ▼ CREDIT 主催・共催・協力 -->
   <section class="section" id="credit">
     <div class="wrap grid">
       <div class="label"><span class="en h">Credit</span><span class="ja">クレジット</span></div>
@@ -446,6 +456,7 @@
   </div>
 </main>
 
+<!-- ▼ ここから下は動きの仕組み。文章の修正では触らない -->
 <script>
 (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
