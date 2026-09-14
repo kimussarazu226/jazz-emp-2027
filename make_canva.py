@@ -1,64 +1,36 @@
 #!/usr/bin/env python3
-"""Canva取り込み用の静的版 canva.html を index.html から生成する。
-動き（カウントダウン・ティッカー・フラップ）を静的な文字に置き換え、各セクションをCanvaのページとして印付けする。"""
-import re, os
+"""Canva取り込み用 canva.html を index.html から生成する（動きと地図を保持する版）。
+・フラップ表示とカウントダウンは初期状態を静的に書き出し、JSはその上で動かす（文字として編集可能にするため）
+・ティッカーは1行の文字列に単純化（変換時の縦折れ防止）"""
+import re, os, datetime
 HERE = os.path.dirname(os.path.abspath(__file__))
 s = open(os.path.join(HERE, "index.html"), encoding="utf-8").read()
-
-# 1) scripts out
-s = re.sub(r"<!-- ▼ ここから下は動きの仕組み。文章の修正では触らない -->\s*<script>.*?</script>\s*", "", s, flags=re.S)
 s = s.replace('<meta name="robots" content="noindex"> <!-- 本公開時にこの行を削除（検索エンジンに載せる） -->\n', '')
 
-# 2) nav clock out
-s = s.replace('      <li class="keep"><span class="clock" id="clock">TOKYO --:--:--</span></li>\n', '')
+# flap cells pre-rendered
+def cells(txt):
+    return "".join(f'<span class="c{" sp" if ch == " " else ""}">{"" if ch == " " else ch}</span>' for ch in txt)
+s = re.sub(r'<div class="flap( wide)?" data-text="([^"]*)"></div>', lambda m: f'<div class="flap{m.group(1) or ""}" data-text="{m.group(2)}">{cells(m.group(2))}</div>', s)
+s = s.replace("""  document.querySelectorAll('.flap').forEach(f => {
+    f.innerHTML = [...f.dataset.text].map(ch => `<span class="c${ch === ' ' ? ' sp' : ''}">${ch === ' ' ? '' : ch}</span>`).join('');
+  });
+""", "")
 
-# 3) countdown -> static opening line
-s = re.sub(r'<div class="count" id="count">.*?</div>\s*</div>\s*</div>',
-           '<div class="count"><span class="eyebrow">Opening</span><span class="static-open">2027.01.31 Sun 12:00</span></div>', s, count=1, flags=re.S)
+# countdown pre-rendered with build-time values
+T0 = datetime.datetime(2027, 1, 31, 3, 0, 0, tzinfo=datetime.timezone.utc)
+diff = max(0, int((T0 - datetime.datetime.now(datetime.timezone.utc)).total_seconds()))
+d, r = divmod(diff, 86400); h, r = divmod(r, 3600); m, sec = divmod(r, 60)
+def digits(n, w): return "".join(f"<span>{c}</span>" for c in str(n).zfill(w))
+s = re.sub(r'<div class="n" data-u="d">.*?</div>', f'<div class="n" data-u="d">{digits(d,3)}</div>', s, flags=re.S)
+s = re.sub(r'<div class="n" data-u="h">.*?</div>', f'<div class="n" data-u="h">{digits(h,2)}</div>', s, flags=re.S)
+s = re.sub(r'<div class="n" data-u="m">.*?</div>', f'<div class="n" data-u="m">{digits(m,2)}</div>', s, flags=re.S)
+s = re.sub(r'<div class="n" data-u="s">.*?</div>', f'<div class="n" data-u="s">{digits(sec,2)}</div>', s, flags=re.S)
 
-# 4) ticker -> one static paragraph
-items = re.findall(r'<div class="item"(?: lang="ja")?><i>([▲■])</i>(.*?)<em>(.*?)</em></div>', s)
-line = "　".join(f"{m} {t} {e}" for m, t, e in items)
-s = re.sub(r'<div class="ticker" aria-hidden="true">.*?</div>\s*</div>\s*</div>',
-           f'<div class="ticker-static" lang="ja">{line}</div>\n  </div>', s, count=1, flags=re.S)
-
-# 5) flap board -> plain text cells
-s = re.sub(r'<div class="flap" data-text="([^"]*)"></div>', r'<div class="tt-time">\1</div>', s)
-s = re.sub(r'<div class="flap wide" data-text="([^"]*)"></div>', r'<div class="tt-what">\1</div>', s)
-
-# 6) mark pages for Canva (one per block)
-pages = [
-    ('<header class="nav">', '<header class="nav" data-document-role="page" data-label="Nav">'),
-    ('<section class="hero" id="hero">', '<section class="hero" id="hero" data-document-role="page" data-label="Hero">'),
-    ('<div class="band">', '<div class="band" data-document-role="page" data-label="Info band">'),
-    ('<section class="section" id="about">', '<section class="section" id="about" data-document-role="page" data-label="About">'),
-    ('<section class="section" id="lineup">', '<section class="section" id="lineup" data-document-role="page" data-label="Lineup">'),
-    ('<section class="section" id="program">', '<section class="section" id="program" data-document-role="page" data-label="Program">'),
-    ('<section class="section" id="ticket">', '<section class="section" id="ticket" data-document-role="page" data-label="Ticket">'),
-    ('<section class="section" id="access">', '<section class="section" id="access" data-document-role="page" data-label="Access">'),
-    ('<section class="section" id="notice">', '<section class="section" id="notice" data-document-role="page" data-label="Notice">'),
-    ('<section class="section" id="news">', '<section class="section" id="news" data-document-role="page" data-label="News">'),
-    ('<section class="section" id="credit">', '<section class="section" id="credit" data-document-role="page" data-label="Credit">'),
-    ('<footer class="footer">', '<footer class="footer" data-document-role="page" data-label="Footer">'),
-]
-for a, b in pages:
-    assert a in s, a
-    s = s.replace(a, b, 1)
-
-# 7) static styles for the replaced parts; fixed desktop width for a predictable conversion
-s = s.replace("</style>", """
-  /* —— Canva import edition —— */
-  body { width: 1366px; margin: 0 auto; }
-  .count .static-open { font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
-  .ticker-static { font-family: var(--jp); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; padding: 14px var(--pad); line-height: 1.8; }
-  .tt-time { font-weight: 800; font-size: 22px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .tt-what { font-family: var(--jp); font-weight: 700; font-size: 20px; }
-  .wordmark .l { font-variation-settings: normal; }
-  /* vertical section labels: plain horizontal text rotated -90 so Canva keeps it as one rotated text box */
-  .label { display: block; position: relative; min-height: 360px; }
-  .label .en { writing-mode: horizontal-tb; position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
-  .label .ja { writing-mode: horizontal-tb; text-orientation: mixed; position: absolute; left: 96px; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
-</style>""", 1)
+# ticker: one nowrap line, items inline
+s = s.replace(".ticker .track { display: flex; width: max-content; animation: run 44s linear infinite; }",
+              ".ticker .track { display: inline-block; white-space: nowrap; animation: run 44s linear infinite; }")
+s = s.replace(".ticker .item { padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; display: flex; gap: 12px; align-items: center; }",
+              ".ticker .item { display: inline-block; white-space: nowrap; padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }\n  .ticker .item i, .ticker .item em { margin-right: 12px; }")
 
 open(os.path.join(HERE, "canva.html"), "w", encoding="utf-8").write(s)
-print("canva.html", len(s), "pages", s.count('data-document-role="page"'))
+print("canva.html", len(s), "flaps pre-rendered:", s.count('class="flap'), "countdown:", d, h, m, sec)
