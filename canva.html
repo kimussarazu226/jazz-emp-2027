@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAZZ EMP vol.9</title>
+<meta name="description" content="金融のまち「日本橋兜町」に若手精鋭ミュージシャンが集う。JAZZ EMP vol.9 @TOKYO FINANCIAL STREET。2027年1月31日（日）12:00–18:00、KABUTO ONE 4Fホールにて開催。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --paper: #f3f1ea; --ink: #111111; --muted: #6d6a64; --rule: #111111; --hair: #d5d2ca;
+    --red: #e8392b; --cream: #f3f1ea; --black: #111111;
+    --gutter: 24px; --max: 1440px; --pad: clamp(20px, 4vw, 56px);
+    --display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  }
+  /* One deliberate world: cream paper, black type, red accent. No OS-theme swap. */
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--display), var(--jp); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; font-feature-settings: "tnum" 1; overflow-x: hidden; }
+  :lang(ja) { font-family: var(--jp); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  h1, h2, h3, p { margin: 0; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .h { font-weight: 800; font-stretch: 100%; letter-spacing: -0.04em; line-height: 0.86; text-transform: uppercase; }
+
+  /* ——— Nav (cream) ——— */
+  .nav { position: sticky; top: 0; z-index: 20; background: var(--cream); color: var(--black); border-bottom: 1px solid var(--black); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .brand { font-weight: 800; letter-spacing: -0.03em; font-size: 17px; }
+  .brand i { font-style: normal; color: var(--red); }
+  .nav ul { display: flex; gap: 22px; align-items: center; }
+  .nav li a { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav li a:hover { color: var(--red); }
+  .nav .cta { background: var(--red); color: var(--cream); padding: 6px 12px; }
+  .nav .clock { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; letter-spacing: 0.08em; }
+  @media (max-width: 860px) { .nav li:not(.keep) { display: none; } }
+
+  /* ——— Hero (cream) ——— */
+  .hero { background: var(--cream); color: var(--black); position: relative; overflow: hidden; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); grid-template-rows: auto auto; padding-top: clamp(20px, 3vw, 40px); }
+  .corner { position: absolute; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; z-index: 3; }
+  .corner.tr { right: var(--pad); top: clamp(20px, 3vw, 40px); text-align: right; }
+  .corner.tr i { font-style: normal; color: var(--red); display: block; }
+  .kicker { grid-column: 1 / span 7; grid-row: 1; font-family: var(--jp); font-size: clamp(13px, 1.2vw, 15px); font-weight: 500; letter-spacing: 0.06em; z-index: 3; }
+  .wordmark { grid-column: 1 / -1; grid-row: 2; z-index: 2; margin-top: 8px; font-size: clamp(88px, 18.5vw, 300px); cursor: default; user-select: none; position: relative; pointer-events: none; }
+  .wordmark .l { display: inline-block; font-variation-settings: "wdth" 100; }
+  .wordmark .line { display: block; white-space: nowrap; }
+  .nine { position: absolute; right: -0.06em; top: 0.12em; font-size: clamp(180px, 28vw, 440px); font-weight: 900; line-height: 0.75; letter-spacing: -0.06em; color: var(--red); z-index: 1; pointer-events: none; user-select: none; }
+  .hero-kv { grid-column: 7 / -1; grid-row: 2 / span 2; align-self: end; z-index: 2; margin-bottom: -2px; margin-top: 4vw; }
+  .hero-kv img { width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 97%); mask-image: linear-gradient(to bottom, #000 72%, transparent 97%); }
+  .hero-date { grid-column: 1 / span 6; grid-row: 3; align-self: end; z-index: 3; border-top: 3px solid var(--black); padding: 14px 0 clamp(24px, 3vw, 44px); margin-top: clamp(12px, 2vw, 28px); }
+  .hero-date .d { font-size: clamp(24px, 3.4vw, 52px); line-height: 1.04; }
+  .hero-date .d span { display: block; white-space: nowrap; }
+  .hero-meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin-top: 18px; font-size: 13px; }
+  .hero-meta dt { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .hero-meta dd { margin: 0; font-family: var(--jp); font-weight: 500; }
+  @media (max-width: 860px) {
+    .wordmark { font-size: clamp(76px, 22vw, 180px); }
+    .nine { font-size: 36vw; top: .3em; }
+    .hero-kv { grid-column: 4 / -1; grid-row: 3; margin-top: 0; }
+    .hero-date { grid-column: 1 / -1; grid-row: 4; }
+  }
+
+  /* ——— Red band: countdown + ticker (black on red) ——— */
+  .band { background: var(--red); color: var(--black); display: grid; grid-template-columns: auto 1fr; align-items: stretch; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .count { display: flex; align-items: center; gap: 18px; padding: 12px var(--pad); border-right: 2px solid var(--black); white-space: nowrap; }
+  .count .eyebrow i { font-style: normal; margin-left: 8px; }
+  .digits { display: flex; gap: 14px; }
+  .unit { display: flex; align-items: baseline; gap: 4px; }
+  .unit .n { display: flex; font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; height: 1em; overflow: hidden; }
+  .unit .n span { display: inline-block; }
+  .unit .n span.flip { animation: flip .38s cubic-bezier(.2,.7,.2,1); }
+  @keyframes flip { from { transform: translateY(-100%); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+  .unit .u { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .ticker { overflow: hidden; display: flex; align-items: center; }
+  .ticker .track { display: flex; width: max-content; animation: run 44s linear infinite; }
+  .ticker:hover .track { animation-play-state: paused; }
+  .ticker .item { padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; display: flex; gap: 12px; align-items: center; }
+  .ticker .item i { font-style: normal; }
+  .ticker .item em { font-style: normal; font-weight: 500; opacity: .75; }
+  .ticker .item[lang="ja"] { font-family: var(--jp); letter-spacing: 0.04em; }
+  @keyframes run { to { transform: translateX(-50%); } }
+  @media (max-width: 860px) { .band { grid-template-columns: 1fr; } .count { border-right: 0; border-bottom: 2px solid var(--black); justify-content: space-between; } }
+
+  /* ——— Below the band ——— */
+  .below { background: var(--cream); color: var(--ink); }
+  .section { padding: clamp(44px, 6vw, 96px) 0; border-bottom: 1px solid var(--rule); }
+  .section .grid { row-gap: 24px; }
+  .label { grid-column: 1 / span 3; }
+  .label .en { display: block; color: var(--red); font-size: clamp(40px, 5.2vw, 84px); }
+  .label .ja { display: block; font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.14em; color: var(--muted); margin-top: 10px; }
+  .body { grid-column: 4 / span 9; }
+  @media (min-width: 861px) {
+    .label { display: flex; gap: 16px; align-items: flex-start; }
+    .label .en { writing-mode: vertical-rl; transform: rotate(180deg); line-height: 0.9; }
+    .label .ja { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.2em; margin-top: 0; }
+  }
+  @media (max-width: 860px) { .label, .body { grid-column: 1 / -1; } .section .grid { row-gap: 18px; } .label .en { font-size: clamp(36px, 10vw, 64px); } }
+  .lede { font-family: var(--jp); font-size: clamp(18px, 2vw, 25px); font-weight: 500; line-height: 1.7; max-width: 32em; text-wrap: balance; }
+  .copy { font-family: var(--jp); max-width: 38em; margin-top: 20px; color: var(--muted); }
+  .copy p + p { margin-top: 1em; }
+  .note { font-family: var(--jp); font-size: 12px; color: var(--muted); margin-top: 14px; letter-spacing: 0.04em; }
+
+  /* Lineup */
+  .acts { border-top: 3px solid var(--rule); }
+  .act { display: grid; grid-template-columns: 1.1fr 2fr auto; gap: 10px var(--gutter); padding: 22px 0; border-bottom: 1px solid var(--hair); align-items: baseline; }
+  .act-name { font-family: var(--jp); font-weight: 700; font-size: clamp(24px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.02em; }
+  .act-name.en { font-family: var(--display); font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase; }
+  .act-members { font-family: var(--jp); font-size: 14px; line-height: 1.75; color: var(--muted); }
+  .act-members b { color: var(--ink); font-weight: 700; }
+  .act-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 8px; white-space: nowrap; }
+  .act-tag.red { background: var(--red); color: var(--cream); border-color: var(--red); }
+  @media (max-width: 640px) { .act { grid-template-columns: 1fr auto; } .act-members { grid-column: 1 / -1; } }
+
+  /* Program: split-flap board */
+  .board { border-top: 3px solid var(--rule); }
+  .row { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 0 clamp(12px, 2vw, 28px); padding: 12px 0; border-bottom: 1px solid var(--hair); align-items: center; }
+  .row.now::before { content: ""; position: absolute; left: -14px; top: 50%; margin-top: -3px; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+  .flap { display: inline-flex; gap: 2px; }
+  .flap .c { display: inline-grid; place-items: center; width: 1.05em; height: 1.45em; background: #e6e3da; font-weight: 700; font-size: clamp(16px, 2vw, 24px); line-height: 1; position: relative; font-variant-numeric: tabular-nums; font-family: var(--display), var(--jp); color: var(--ink); }
+  .flap .c.sp { background: transparent; width: .45em; }
+  .flap .c::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--cream); }
+  .flap.wide .c { width: auto; min-width: 1.05em; padding: 0 .12em; }
+  .row .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .row .tag.hot { color: var(--red); }
+  .people { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); margin-top: 32px; border-top: 1px solid var(--hair); padding-top: 18px; }
+  .person .eyebrow { color: var(--muted); }
+  .person .n { font-family: var(--jp); font-weight: 700; font-size: 20px; margin-top: 6px; line-height: 1.3; }
+  .person .r { font-family: var(--jp); font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
+  @media (max-width: 640px) { .people { grid-template-columns: 1fr; } .row { grid-template-columns: auto 1fr; } .row .tag { grid-column: 2; } }
+
+  /* Ticket */
+  .ticket { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); border-top: 3px solid var(--rule); padding-top: 22px; }
+  .tk { display: flex; flex-direction: column; gap: 8px; }
+  .tk .k { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .tk .v { font-size: clamp(30px, 3.8vw, 56px); }
+  .tk .s { font-family: var(--jp); font-size: 13px; color: var(--muted); }
+  .tk.price .v { color: var(--red); }
+  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 10px var(--gutter); margin-top: 32px; }
+  .way, .steps { display: contents; }
+  .way:nth-child(1) > *, .way:nth-child(1) .step { grid-column: 1; }
+  .way:nth-child(2) > *, .way:nth-child(2) .step { grid-column: 2; }
+  .way > .hd { grid-row: 1; }
+  .way .step:nth-child(1) { grid-row: 2; }
+  .way .step:nth-child(2) { grid-row: 3; }
+  .way > .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-top: 3px solid var(--rule); padding: 14px 0 4px; }
+  .way > .hd b { font-family: var(--jp); font-weight: 700; font-size: 18px; }
+  .way > .hd span { font-weight: 800; letter-spacing: -0.03em; font-size: 24px; color: var(--red); white-space: nowrap; }
+  .step { display: grid; grid-template-columns: 56px 1fr; gap: 14px; background: #e9e6de; padding: 16px 16px 16px 12px; align-items: start; }
+  .step .no { font-weight: 800; font-size: 40px; line-height: .8; letter-spacing: -0.05em; color: var(--red); }
+  .step .no small { display: block; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  .step b { display: block; font-family: var(--jp); font-weight: 700; font-size: 15px; line-height: 1.5; }
+  .step p { font-family: var(--jp); font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.7; }
+  .step .free { display: inline-block; font-family: var(--display); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--ink); padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+  .btn { display: inline-block; margin-top: 12px; background: var(--red); color: var(--cream); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 16px; font-size: 12px; }
+  .btn:hover { background: var(--black); color: var(--cream); }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--cream); }
+  .notices { font-family: var(--jp); font-size: 14px; line-height: 1.8; border-top: 3px solid var(--rule); }
+  .notices li { padding: 10px 0; border-bottom: 1px solid var(--hair); padding-left: 1.2em; text-indent: -1.2em; }
+  .notices li::before { content: "＊"; color: var(--red); }
+  @media (max-width: 640px) { .ticket, .ways { grid-template-columns: 1fr; } .way:nth-child(2) > *, .way:nth-child(2) .step { grid-column: 1; } .way:nth-child(2) > .hd { grid-row: 4; margin-top: 18px; } .way:nth-child(2) .step:nth-child(1) { grid-row: 5; } .way:nth-child(2) .step:nth-child(2) { grid-row: 6; } }
+
+  /* Access */
+  .access { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .venue .name { font-size: clamp(30px, 3.4vw, 48px); }
+  .venue .name small { font-weight: 600; font-size: .45em; letter-spacing: 0; vertical-align: .25em; margin-left: .3em; }
+  .venue .addr { font-family: var(--jp); margin-top: 12px; }
+  .venue ul { margin-top: 18px; border-top: 1px solid var(--rule); }
+  .venue li { display: grid; grid-template-columns: 96px 1fr; gap: var(--gutter); padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: var(--jp); font-size: 14px; }
+  .venue li b { font-weight: 700; }
+  .maplink { display: inline-block; margin-top: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+  .map { position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--rule); background: #e9e6de; }
+  .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(1); }
+  @media (max-width: 860px) { .access { grid-template-columns: 1fr; } }
+
+  /* News / Credit */
+  .news { border-top: 3px solid var(--rule); }
+  .news li { display: grid; grid-template-columns: 120px 1fr; gap: var(--gutter); padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .news time { font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+  .news p { font-family: var(--jp); max-width: 46em; }
+  .credit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px var(--gutter); border-top: 3px solid var(--rule); padding-top: 20px; }
+  .credit div { font-family: var(--jp); font-size: 14px; line-height: 1.7; }
+  .credit .wide { grid-column: 1 / -1; }
+  .credit b { display: block; font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .tbd { color: var(--muted); }
+  @media (max-width: 640px) { .news li, .venue li { grid-template-columns: 1fr; gap: 4px; } .credit { grid-template-columns: 1fr; } }
+
+  /* Footer (black, giant cropped wordmark) */
+  .footer { padding: 40px 0 0; overflow: hidden; }
+  .footer .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; padding-bottom: 28px; }
+  .footer .fine { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .footer .social { display: flex; gap: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; }
+  .footer .giant { font-size: clamp(64px, 16.5vw, 300px); line-height: .74; margin-bottom: -0.16em; white-space: nowrap; letter-spacing: -0.05em; color: var(--red); padding-left: var(--pad); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker .track { animation: none; }
+    .unit .n span.flip { animation: none; }
+    .wordmark .l { font-variation-settings: "wdth" 100 !important; }
+  }
+
+  /* —— Canva import edition —— */
+  body { width: 1366px; margin: 0 auto; }
+  .count .static-open { font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
+  .ticker-static { font-family: var(--jp); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; padding: 14px var(--pad); line-height: 1.8; }
+  .tt-time { font-weight: 800; font-size: 22px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tt-what { font-family: var(--jp); font-weight: 700; font-size: 20px; }
+  .wordmark .l { font-variation-settings: normal; }
+</style>
+</head>
+<body>
+
+<header class="nav" data-document-role="page" data-label="Nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Jazz Emp <i>9</i></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#lineup">Lineup</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#ticket">Ticket</a></li>
+      <li><a href="#access">Access</a></li>
+      <li><a href="#news">News</a></li>
+      <li class="keep"><a class="cta" href="#ticket">Ticket</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ▼ ヒーロー（日程・会場・料金の基本情報） -->
+  <section class="hero" id="hero" data-document-role="page" data-label="Hero">
+    <div class="corner tr"><i>Vol.9</i>Tokyo Financial Street</div>
+    <div class="wrap">
+      <p class="kicker" lang="ja">金融のまち「日本橋兜町」に若手精鋭ミュージシャンが集う</p>
+      <div class="nine" aria-hidden="true">9</div>
+      <h1 class="wordmark h" id="wordmark" aria-label="JAZZ EMP vol.9"><span class="line"><span class="l">J</span><span class="l">a</span><span class="l">z</span><span class="l">z</span></span><span class="line"><span class="l">E</span><span class="l">m</span><span class="l">p</span></span></h1>
+      <div class="hero-kv">
+        <img id="kv" src="https://kimussarazu226.github.io/jazz-emp-2027/assets/keyvisual.webp" width="1600" height="2091" alt="KABUTO ONEのビルがトランペットのベルから立ち上がるキービジュアル" fetchpriority="high">
+      </div>
+      <div class="hero-date">
+        <div class="d h"><span>January 31, 2027</span><span>Sun 12:00 – 18:00</span></div>
+        <dl class="hero-meta">
+          <dt>Venue</dt><dd lang="ja">KABUTO ONE 4F ホール（東京・日本橋兜町）</dd>
+          <dt>Admission</dt><dd lang="ja">会場 ¥2,200（全席自由・約300席）／ オンライン配信 無料</dd>
+          <dt>Stream</dt><dd lang="ja">インターネットテレビ STOCKVOICE にて生配信</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" data-document-role="page" data-label="Info band">
+    <div class="count"><span class="eyebrow">Opening</span><span class="static-open">2027.01.31 Sun 12:00</span></div>
+    <div class="ticker-static" lang="ja">▲ 鈴木真明地 SAX　▲ 菊地立起 TP　▲ 窪田ひかり KEY　▲ 叶雅久 KEY　▲ 池田篤カルテット with 原朋直 SPECIAL　■ Kabuto One 4F Hall 2027.01.31 Sun　■ Admission ¥2,200 Online Free　■ Live on STOCKVOICE 12:00–18:00</div>
+  </div>
+  </div>
+
+  <div class="below">
+  <!-- ▼ ABOUT 紹介文 -->
+  <section class="section" id="about" data-document-role="page" data-label="About">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">About</span><span class="ja">JAZZ EMPとは</span></div>
+      <div class="body">
+        <p class="lede" lang="ja">東京の金融街・日本橋兜町を舞台に、若手精鋭ミュージシャンが集うジャズイベント。9回目となる今回は、KABUTO ONEを会場に、若手4組のセッションとスペシャルパフォーマンスをお届けします。</p>
+        <div class="copy" lang="ja">
+          <p>株式市場の中心地として知られる日本橋兜町。その象徴であるKABUTO ONEのホールに、いま最前線で活躍する若手ジャズミュージシャンが集まります。会場に来られない方はインターネットテレビSTOCKVOICEの生配信でお楽しみください。</p>
+          <p>音楽監督は原朋直（洗足学園音楽大学）と池田篤（国立音楽大学）。主催は一般社団法人日本橋兜らいぶ推進協議会です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ LINEUP 出演者。1行 = 1組。<li class="act"> をコピーして増やす -->
+  <section class="section" id="lineup" data-document-role="page" data-label="Lineup">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Lineup</span><span class="ja">出演</span></div>
+      <div class="body">
+        <ul class="acts">
+          <li class="act"><div class="act-name" lang="ja">鈴木真明地</div><div class="act-members" lang="ja"><b>鈴木真明地 (Sax.)</b> ／ 伊東寿 (Pf.) ／ 吉武健治 (Ba.) ／ 後藤龍太郎 (Drs.)</div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">菊地立起</div><div class="act-members" lang="ja"><b>菊地立起 (Tp.)</b> ／ 布施音人 (Pf.) ／ 古木佳祐 (Ba.) ／ 中村海斗 (Drs.)</div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">窪田ひかり</div><div class="act-members" lang="ja"><b>窪田ひかり (Key.)</b> ／ メンバー後日発表</div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">叶雅久</div><div class="act-members" lang="ja"><b>叶雅久 (Key.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 加藤一平 (Gt.) ／ 織原良次 (Ba.) ／ 片山晴翔 (Drs.)</div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">池田篤カルテット with 原朋直</div><div class="act-members" lang="ja"><b>池田篤 (As.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 池尻洋史 (Ba.) ／ 濱田省吾 (Drs.) ／ <b>原朋直 (Tp.)</b></div><span class="act-tag red">Special</span></li>
+        </ul>
+        <p class="note">※出演者・メンバーは変更となる場合があります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ PROGRAM 時間割。data-t と data-text の両方を直す -->
+  <section class="section" id="program" data-document-role="page" data-label="Program">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Program</span><span class="ja">プログラム</span></div>
+      <div class="body">
+        <div class="board" id="board">
+          <div class="row" data-t="12:00"><div class="tt-time">12:00</div><div class="tt-what">オープニング</div><span class="tag hot">Open</span></div>
+          <div class="row" data-t="12:10"><div class="tt-time">12:10</div><div class="tt-what">SESSION #1</div><span class="tag">Live</span></div>
+          <div class="row" data-t="13:10"><div class="tt-time">13:10</div><div class="tt-what">SESSION #2</div><span class="tag">Live</span></div>
+          <div class="row" data-t="14:10"><div class="tt-time">14:10</div><div class="tt-what">休憩</div><span class="tag">Break</span></div>
+          <div class="row" data-t="15:00"><div class="tt-time">15:00</div><div class="tt-what">SESSION #3</div><span class="tag">Live</span></div>
+          <div class="row" data-t="16:00"><div class="tt-time">16:00</div><div class="tt-what">SESSION #4</div><span class="tag">Live</span></div>
+          <div class="row" data-t="17:00"><div class="tt-time">17:00</div><div class="tt-what">SPECIAL PERFORMANCE</div><span class="tag hot">Special</span></div>
+          <div class="row" data-t="18:00"><div class="tt-time">18:00</div><div class="tt-what">クロージング</div><span class="tag">Close</span></div>
+        </div>
+        <p class="note" lang="ja">※プログラムの内容は予告なく変更となる可能性があります。各セッションの出演順は後日発表します。</p>
+        <div class="people">
+          <div class="person"><div class="eyebrow">MC</div><div class="n" lang="ja">鈴木ともみ</div><div class="r" lang="ja">JazzEMPアンバサダー／ストックボイスキャスター</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ TICKET 料金と申込手順。href="#" を teket / STOCKVOICE のURLに差し替える -->
+  <section class="section" id="ticket" data-document-role="page" data-label="Ticket">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Ticket</span><span class="ja">チケット</span></div>
+      <div class="body">
+        <div class="ticket">
+          <div class="tk price"><span class="k">Admission</span><span class="v h">¥2,200</span><span class="s" lang="ja">会場観覧・全席自由（約300席）</span></div>
+          <div class="tk"><span class="k">Online</span><span class="v h">Free</span><span class="s" lang="ja">STOCKVOICE 生配信・視聴無料</span></div>
+          <div class="tk"><span class="k">Date</span><span class="v h">1.31 Sun</span><span class="s" lang="ja">2027年1月31日（日）12:00–18:00</span></div>
+        </div>
+        <p class="note" lang="ja">会場・配信ともに事前のお申し込みが必須です。</p>
+
+        <div class="ways">
+          <div class="way">
+            <div class="hd"><b lang="ja">KABUTO ONE 会場で観覧する</b><span>¥2,200</span></div>
+            <div class="steps">
+              <div class="step"><div class="no">1<small>Step</small></div><div><b lang="ja">teketで「入場券」を申し込む</b><p lang="ja">JazzEMP申込サイト（teket）からお申し込みください。</p><a class="btn" href="#" lang="ja">teketで申し込む</a></div></div>
+              <div class="step"><div class="no">2<small>Step</small></div><div><b lang="ja">当日、受付でチケット画面を提示</b><p lang="ja">KABUTO ONE 4F ホールの会場受付にてご提示ください。全席自由（約300席）。</p></div></div>
+            </div>
+          </div>
+          <div class="way">
+            <div class="hd"><b lang="ja">オンライン生配信で視聴する</b><span>Free</span></div>
+            <div class="steps">
+              <div class="step"><div class="no">1<small>Step</small></div><div><b lang="ja">teketで「オンライン視聴チケット」を申し込む<span class="free">Free</span></b><p lang="ja">JazzEMP申込サイト（teket）からお申し込みください（無料）。</p><a class="btn" href="#" lang="ja">teketで申し込む</a></div></div>
+              <div class="step"><div class="no">2<small>Step</small></div><div><b lang="ja">STOCKVOICEにユーザー登録する<span class="free">Free</span></b><p lang="ja">配信サイト STOCKVOICE のユーザー登録（無料）を行ってください。開始時間になりましたらサインインの上、ライブ配信をご覧ください。</p><a class="btn ghost" href="#" lang="ja">STOCKVOICEに登録</a></div></div>
+            </div>
+          </div>
+        </div>
+        <ul class="notices" style="margin-top:28px" lang="ja">
+          <li>視聴にあたっては、「本チケット購入」と「STOCKVOICEへのユーザー登録」の双方をお願いいたします。</li>
+          <li>「オンライン視聴チケット」では、KABUTO ONE会場にはご入場いただけません。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ ACCESS 会場と地図 -->
+  <section class="section" id="access" data-document-role="page" data-label="Access">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Access</span><span class="ja">会場・アクセス</span></div>
+      <div class="body">
+        <div class="access">
+          <div class="venue">
+            <div class="name h">Kabuto One<small>4F Hall</small></div>
+            <p class="addr" lang="ja">東京都中央区日本橋兜町7番1号　KABUTO ONE 4F ホール</p>
+            <ul>
+              <li><b>茅場町駅</b><span lang="ja">東京メトロ東西線 直結</span></li>
+              <li><b>日本橋駅</b><span lang="ja">東京メトロ銀座線・東西線、都営浅草線 D2出口 徒歩2分</span></li>
+              <li><b>東京駅</b><span lang="ja">JR線、東京メトロ丸ノ内線 八重洲北口 徒歩12分</span></li>
+            </ul>
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=KABUTO+ONE+%E6%97%A5%E6%9C%AC%E6%A9%8B%E5%85%9C%E7%94%BA7-1" target="_blank" rel="noopener">Google Mapsで開く</a>
+          </div>
+          <div class="map">
+            <iframe title="KABUTO ONE 地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps?q=KABUTO%20ONE%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%97%A5%E6%9C%AC%E6%A9%8B%E5%85%9C%E7%94%BA7-1&z=17&hl=ja&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ NOTICE 注意事項 -->
+  <section class="section" id="notice" data-document-role="page" data-label="Notice">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Notice</span><span class="ja">ご来場にあたって</span></div>
+      <div class="body">
+        <ul class="notices" lang="ja">
+          <li>会場には駐車場のご用意がありません。ご来場の際は公共交通機関をお使いください。</li>
+          <li>当日、ホワイエにて軽食・飲み物の販売を予定しています。現金決済には対応しておりませんので、クレジットカード、各種電子マネーでお支払いください。</li>
+          <li>ホワイエでご購入されたもの以外の飲食物のお持ち込みはお控えください。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ NEWS お知らせ。新しいものを上に追加 -->
+  <section class="section" id="news" data-document-role="page" data-label="News">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">News</span><span class="ja">お知らせ</span></div>
+      <div class="body">
+        <ul class="news">
+          <li><time datetime="2026-09-10">2026.09.10</time><p lang="ja">JAZZ EMP vol.9 の開催が決定。2027年1月31日（日）、KABUTO ONE 4F ホールにて。出演者・プログラムを公開しました。</p></li>
+          <li><time datetime="2025-11-01">2025</time><p lang="ja"><b>Music Cities Awards 受賞のお知らせ</b>　Jazzy Business Consulting(株)は、Sound DiplomacyおよびMusic Cities Eventsが主催する国際的なアワード「2025 Music Cities Awards」において、「Best Use of Music in Real Estate or City Planning」を受賞いたしました。兜町エリアでのJAZZへの取り組みや、JAZZTOMO♪というデジタルツールの活用が、音楽を都市の活性化や不動産価値の創出に結びつけたと高く評価され、日本企業として初めてノミネートされるに至りました。</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▼ CREDIT 主催・共催・協力 -->
+  <section class="section" id="credit" data-document-role="page" data-label="Credit">
+    <div class="wrap grid">
+      <div class="label"><span class="en h">Credit</span><span class="ja">クレジット</span></div>
+      <div class="body">
+        <div class="credit">
+          <div><b>主催</b><span lang="ja">一般社団法人日本橋兜らいぶ推進協議会</span></div>
+          <div><b>共催</b><span lang="ja">㈱日本取引所グループ、平和不動産㈱、一般社団法人国際資産運用センター推進機構（JIAM）</span></div>
+          <div><b>音楽監督</b><span lang="ja">原朋直（洗足学園音楽大学）、池田篤（国立音楽大学）</span></div>
+          <div><b>JazzEMPアンバサダー</b><span lang="ja">鈴木ともみ</span></div>
+          <div><b>企画</b><span lang="ja">JAZZEMP実行委員会（実行委員長 有友圭一、副実行委員長 東海林正賢）</span></div>
+          <div><b>協力</b><span lang="ja">㈱ストックボイス、㈱SAKAMOTOgraph.</span></div>
+          <div class="wide"><b>Supporters</b><span lang="ja">兜町町会、茅場町一丁目町会、茅場町二三丁目町会、日本橋七の部連合町会</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" data-document-role="page" data-label="Footer">
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <p class="fine">Jazz Emp vol.9 / @Tokyo Financial Street / 2027.01.31 / Kabuto One</p>
+        </div>
+        <div>
+          <p class="fine" lang="ja">お問合せ先：一般社団法人日本橋兜らいぶ推進協議会（Jazz EMP実行委員会）</p>
+          <div class="social">
+            <a href="tel:0336660323">03-3666-0323</a>
+            <a href="mailto:info@jazzybiz.co.jp" style="text-transform:none">info@jazzybiz.co.jp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="giant h" aria-hidden="true">Jazz Emp</div>
+  </footer>
+  </div>
+</main>
+
+</body>
+</html>
