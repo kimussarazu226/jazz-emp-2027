@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAZZ EMP vol.9 — Program board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Noto+Sans+JP:wght@700&display=swap">
+<style>
+  :root { --red: #e8392b; --ink: #111111; --muted: #6d6a64; --hair: #d5d2ca; --cream: #f3f1ea; }
+  html, body { margin: 0; background: transparent; }
+  body { font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .board { border-top: 3px solid var(--ink); }
+  .row { display: grid; grid-template-columns: auto 1fr auto; gap: 0 clamp(12px, 2vw, 28px); padding: 12px 0; border-bottom: 1px solid var(--hair); align-items: center; }
+  .flap { display: inline-flex; gap: 2px; }
+  .flap .c { display: inline-grid; place-items: center; width: 1.05em; height: 1.45em; background: #e6e3da; font-weight: 700; font-size: clamp(16px, 2vw, 24px); line-height: 1; position: relative; font-variant-numeric: tabular-nums; font-family: "Archivo", "Noto Sans JP", sans-serif; }
+  .flap .c.sp { background: transparent; width: .45em; }
+  .flap .c::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--cream); }
+  .flap.wide .c { width: auto; min-width: 1.05em; padding: 0 .12em; }
+  .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .tag.hot { color: var(--red); }
+  .note { font-family: "Noto Sans JP", sans-serif; font-size: 12px; color: var(--muted); margin-top: 14px; letter-spacing: 0.04em; }
+  @media (max-width: 640px) { .row { grid-template-columns: auto 1fr; } .tag { grid-column: 2; } }
+</style>
+</head>
+<body>
+<div class="board" id="board">
+  <!-- ▼ 時間割。data-text の中身を直す。行を増やす時は1行コピー -->
+  <div class="row"><div class="flap" data-text="12:00"></div><div class="flap wide" data-text="オープニング"></div><span class="tag hot">Open</span></div>
+  <div class="row"><div class="flap" data-text="12:10"></div><div class="flap wide" data-text="SESSION #1"></div><span class="tag">Live</span></div>
+  <div class="row"><div class="flap" data-text="13:10"></div><div class="flap wide" data-text="SESSION #2"></div><span class="tag">Live</span></div>
+  <div class="row"><div class="flap" data-text="14:10"></div><div class="flap wide" data-text="休憩"></div><span class="tag">Break</span></div>
+  <div class="row"><div class="flap" data-text="15:00"></div><div class="flap wide" data-text="SESSION #3"></div><span class="tag">Live</span></div>
+  <div class="row"><div class="flap" data-text="16:00"></div><div class="flap wide" data-text="SESSION #4"></div><span class="tag">Live</span></div>
+  <div class="row"><div class="flap" data-text="17:00"></div><div class="flap wide" data-text="SPECIAL PERFORMANCE"></div><span class="tag hot">Special</span></div>
+  <div class="row"><div class="flap" data-text="18:00"></div><div class="flap wide" data-text="クロージング"></div><span class="tag">Close</span></div>
+</div>
+<p class="note">※プログラムの内容は予告なく変更となる可能性があります。各セッションの出演順は後日発表します。</p>
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#:アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+  document.querySelectorAll('.flap').forEach(f => {
+    f.innerHTML = [...f.dataset.text].map(ch => `<span class="c${ch === ' ' ? ' sp' : ''}">${ch === ' ' ? '' : ch}</span>`).join('');
+  });
+  function settle(f, delay) {
+    if (RM) return;
+    const cells = [...f.querySelectorAll('.c')], target = [...f.dataset.text], t0 = performance.now() + delay;
+    (function step(now) {
+      let done = true;
+      cells.forEach((c, i) => {
+        if (target[i] === ' ') return;
+        const at = t0 + 350 + i * 45;
+        if (now < at) { done = false; if (now > t0 && Math.random() < 0.5) c.textContent = CH[(Math.random() * CH.length) | 0]; }
+        else c.textContent = target[i];
+      });
+      if (!done) requestAnimationFrame(step);
+    })(performance.now());
+  }
+  const board = document.getElementById('board');
+  let done = false;
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !done) { done = true; [...board.querySelectorAll('.row')].forEach((r, i) => r.querySelectorAll('.flap').forEach(f => settle(f, i * 90))); }
+  }), { threshold: 0.25 }).observe(board);
+  board.addEventListener('click', e => { const r = e.target.closest('.row'); if (r) r.querySelectorAll('.flap').forEach(f => settle(f, 0)); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAZZ EMP vol.9 — Info band</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Noto+Sans+JP:wght@500;700&display=swap">
+<style>
+  :root { --red: #e8392b; --black: #111111; }
+  html, body { margin: 0; background: transparent; }
+  body { font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  .band { background: var(--red); color: var(--black); display: grid; grid-template-columns: auto 1fr; align-items: stretch; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); overflow: hidden; }
+  .count { display: flex; align-items: center; gap: 18px; padding: 12px 32px; border-right: 2px solid var(--black); white-space: nowrap; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .eyebrow i { font-style: normal; margin-left: 8px; }
+  .digits { display: flex; gap: 14px; }
+  .unit { display: flex; align-items: baseline; gap: 4px; }
+  .unit .n { display: flex; font-weight: 800; font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; height: 1.15em; overflow: hidden; }
+  .unit .n span { display: inline-block; }
+  .unit .n span.flip { animation: flip .38s cubic-bezier(.2,.7,.2,1); }
+  @keyframes flip { from { transform: translateY(-100%); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+  .unit .u { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .ticker { overflow: hidden; display: flex; align-items: center; }
+  .track { display: inline-block; white-space: nowrap; animation: run 44s linear infinite; }
+  .ticker:hover .track { animation-play-state: paused; }
+  .item { display: inline-block; white-space: nowrap; padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .item[lang="ja"] { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif; letter-spacing: 0.04em; }
+  @keyframes run { to { transform: translateX(-50%); } }
+  @media (max-width: 860px) { .band { grid-template-columns: 1fr; } .count { border-right: 0; border-bottom: 2px solid var(--black); justify-content: space-between; } }
+  @media (prefers-reduced-motion: reduce) { .track { animation: none; } .unit .n span.flip { animation: none; } }
+</style>
+</head>
+<body>
+<div class="band">
+  <div class="count">
+    <span class="eyebrow">Opening in<i>● Live</i></span>
+    <div class="digits">
+      <div class="unit"><div class="n" data-u="d"><span>0</span><span>0</span><span>0</span></div><span class="u">D</span></div>
+      <div class="unit"><div class="n" data-u="h"><span>0</span><span>0</span></div><span class="u">H</span></div>
+      <div class="unit"><div class="n" data-u="m"><span>0</span><span>0</span></div><span class="u">M</span></div>
+      <div class="unit"><div class="n" data-u="s"><span>0</span><span>0</span></div><span class="u">S</span></div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="track" id="track">
+      <!-- ▼ 流れる文字。1行＝1項目。ここを直す -->
+      <span class="item" lang="ja">▲ 鈴木真明地　SAX</span>
+      <span class="item" lang="ja">▲ 菊地立起　TP</span>
+      <span class="item" lang="ja">▲ 窪田ひかり　KEY</span>
+      <span class="item" lang="ja">▲ 叶雅久　KEY</span>
+      <span class="item" lang="ja">▲ 池田篤カルテット with 原朋直　SPECIAL</span>
+      <span class="item">■ Kabuto One 4F Hall　2027.01.31 Sun</span>
+      <span class="item">■ Admission ¥2,200　Online Free</span>
+      <span class="item">■ Live on STOCKVOICE　12:00–18:00</span>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const track = document.getElementById('track'); track.innerHTML += track.innerHTML;
+  const T0 = Date.UTC(2027, 0, 31, 3, 0, 0); // 2027-01-31 12:00 JST  ← 開演日時を変える時はここ
+  const U = {}; ['d','h','m','s'].forEach(k => U[k] = document.querySelector(`[data-u="${k}"]`));
+  function setDigits(el, str) {
+    const sp = el.children;
+    for (let i = 0; i < sp.length; i++) if (sp[i].textContent !== str[i]) {
+      sp[i].textContent = str[i];
+      if (!RM) { sp[i].classList.remove('flip'); void sp[i].offsetWidth; sp[i].classList.add('flip'); }
+    }
+  }
+  function tick() {
+    let diff = Math.max(0, T0 - Date.now());
+    const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+    const h = Math.floor(diff / 36e5); diff -= h * 36e5;
+    const m = Math.floor(diff / 6e4); diff -= m * 6e4;
+    setDigits(U.d, String(d).padStart(3, '0')); setDigits(U.h, String(h).padStart(2, '0'));
+    setDigits(U.m, String(m).padStart(2, '0')); setDigits(U.s, String(Math.floor(diff / 1e3)).padStart(2, '0'));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
