@@ -84,8 +84,7 @@
   .ticker { overflow: hidden; display: flex; align-items: center; }
   .ticker .track { display: inline-block; white-space: nowrap; animation: run 44s linear infinite; }
   .ticker:hover .track { animation-play-state: paused; }
-  .ticker .item { display: inline-block; white-space: nowrap; padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-  .ticker .item i, .ticker .item em { margin-right: 12px; }
+  .ticker .item { display: inline-block; white-space: nowrap; padding: 12px 32px 12px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
   .ticker .item i { font-style: normal; }
   .ticker .item em { font-style: normal; font-weight: 500; opacity: .75; }
   .ticker .item[lang="ja"] { font-family: var(--jp); letter-spacing: 0.04em; }
@@ -117,7 +116,7 @@
   .act-name { font-family: var(--jp); font-weight: 700; font-size: clamp(24px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.02em; }
   .act-name.en { font-family: var(--display); font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase; }
   .act-members { font-family: var(--jp); font-size: 14px; line-height: 1.75; color: var(--muted); }
-  .act-members b { color: var(--ink); font-weight: 700; }
+  .act-members .lead { color: var(--ink); font-weight: 700; }
   .act-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 8px; white-space: nowrap; }
   .act-tag.red { background: var(--red); color: var(--cream); border-color: var(--red); }
   @media (max-width: 640px) { .act { grid-template-columns: 1fr auto; } .act-members { grid-column: 1 / -1; } }
@@ -126,11 +125,7 @@
   .board { border-top: 3px solid var(--rule); }
   .row { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 0 clamp(12px, 2vw, 28px); padding: 12px 0; border-bottom: 1px solid var(--hair); align-items: center; }
   .row.now::before { content: ""; position: absolute; left: -14px; top: 50%; margin-top: -3px; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
-  .flap { display: inline-flex; gap: 2px; }
-  .flap .c { display: inline-grid; place-items: center; width: 1.05em; height: 1.45em; background: #e6e3da; font-weight: 700; font-size: clamp(16px, 2vw, 24px); line-height: 1; position: relative; font-variant-numeric: tabular-nums; font-family: var(--display), var(--jp); color: var(--ink); }
-  .flap .c.sp { background: transparent; width: .45em; }
-  .flap .c::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--cream); }
-  .flap.wide .c { width: auto; min-width: 1.05em; padding: 0 .12em; }
+  .flap { display: inline-block; background: #e6e3da; padding: .3em .5em; font-weight: 700; font-size: clamp(16px, 2vw, 24px); line-height: 1; letter-spacing: .12em; font-variant-numeric: tabular-nums; font-family: var(--display), var(--jp); color: var(--ink); white-space: nowrap; }
   .row .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .row .tag.hot { color: var(--red); }
   .people { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); margin-top: 32px; border-top: 1px solid var(--hair); padding-top: 18px; }
@@ -161,7 +156,7 @@
   .step .no small { display: block; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
   .step b { display: block; font-family: var(--jp); font-weight: 700; font-size: 15px; line-height: 1.5; }
   .step p { font-family: var(--jp); font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.7; }
-  .step .free { display: inline-block; font-family: var(--display); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--ink); padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+  .step .free { display: inline-block; margin-top: 6px; font-family: var(--display); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--ink); padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
   .btn { display: inline-block; margin-top: 12px; background: var(--red); color: var(--cream); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 16px; font-size: 12px; }
   .btn:hover { background: var(--black); color: var(--cream); }
   .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
@@ -201,7 +196,7 @@
   .footer .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; padding-bottom: 28px; }
   .footer .fine { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
   .footer .social { display: flex; gap: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; }
-  .footer .giant { font-size: clamp(64px, 16.5vw, 300px); line-height: .74; margin-bottom: -0.16em; white-space: nowrap; letter-spacing: -0.05em; color: var(--red); padding-left: var(--pad); }
+  .footer .giant { font-size: clamp(64px, 16.5vw, 300px); line-height: 1; margin: 0; padding: 0 var(--pad) 24px; white-space: nowrap; letter-spacing: -0.05em; color: var(--red); }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -236,12 +231,12 @@
     <div class="wrap">
       <p class="kicker" lang="ja">金融のまち「日本橋兜町」に若手精鋭ミュージシャンが集う</p>
       <div class="nine" aria-hidden="true">9</div>
-      <h1 class="wordmark h" id="wordmark" aria-label="JAZZ EMP vol.9"><span class="line"><span class="l">J</span><span class="l">a</span><span class="l">z</span><span class="l">z</span></span><span class="line"><span class="l">E</span><span class="l">m</span><span class="l">p</span></span></h1>
+      <h1 class="wordmark h" id="wordmark"><span class="line">Jazz</span><span class="line">Emp</span></h1>
       <div class="hero-kv">
         <img id="kv" src="https://kimussarazu226.github.io/jazz-emp-2027/assets/keyvisual.webp" width="1600" height="2091" alt="KABUTO ONEのビルがトランペットのベルから立ち上がるキービジュアル" fetchpriority="high">
       </div>
       <div class="hero-date">
-        <div class="d h"><span>January 31, 2027</span><span>Sun 12:00 – 18:00</span></div>
+        <div class="d h">January 31, 2027</div><div class="d h">Sun 12:00 – 18:00</div>
         <dl class="hero-meta">
           <dt>Venue</dt><dd lang="ja">KABUTO ONE 4F ホール（東京・日本橋兜町）</dd>
           <dt>Admission</dt><dd lang="ja">会場 ¥2,200（全席自由・約300席）／ オンライン配信 無料</dd>
@@ -255,23 +250,23 @@
     <div class="count" id="count">
       <span class="eyebrow">Opening in<i>● Live</i></span>
       <div class="digits">
-        <div class="unit"><div class="n" data-u="d"><span>1</span><span>3</span><span>9</span></div><span class="u">D</span></div>
-        <div class="unit"><div class="n" data-u="h"><span>0</span><span>0</span></div><span class="u">H</span></div>
-        <div class="unit"><div class="n" data-u="m"><span>0</span><span>6</span></div><span class="u">M</span></div>
-        <div class="unit"><div class="n" data-u="s"><span>5</span><span>9</span></div><span class="u">S</span></div>
+        <div class="unit"><div class="n" data-u="d">138</div><span class="u">D</span></div>
+        <div class="unit"><div class="n" data-u="h">23</div><span class="u">H</span></div>
+        <div class="unit"><div class="n" data-u="m">37</div><span class="u">M</span></div>
+        <div class="unit"><div class="n" data-u="s">15</div><span class="u">S</span></div>
       </div>
     </div>
     <div class="ticker" aria-hidden="true">
       <!-- ▼ ティッカー（流れる文字列）。1行 = 1項目 -->
       <div class="track" id="track">
-        <div class="item" lang="ja"><i>▲</i>鈴木真明地<em>SAX</em></div>
-        <div class="item" lang="ja"><i>▲</i>菊地立起<em>TP</em></div>
-        <div class="item" lang="ja"><i>▲</i>窪田ひかり<em>KEY</em></div>
-        <div class="item" lang="ja"><i>▲</i>叶雅久<em>KEY</em></div>
-        <div class="item" lang="ja"><i>▲</i>池田篤カルテット with 原朋直<em>SPECIAL</em></div>
-        <div class="item"><i>■</i>Kabuto One 4F Hall<em>2027.01.31 Sun</em></div>
-        <div class="item"><i>■</i>Admission ¥2,200<em>Online Free</em></div>
-        <div class="item"><i>■</i>Live on STOCKVOICE<em>12:00–18:00</em></div>
+        <div class="item" lang="ja">▲ 鈴木真明地　SAX</div>
+        <div class="item" lang="ja">▲ 菊地立起　TP</div>
+        <div class="item" lang="ja">▲ 窪田ひかり　KEY</div>
+        <div class="item" lang="ja">▲ 叶雅久　KEY</div>
+        <div class="item" lang="ja">▲ 池田篤カルテット with 原朋直　SPECIAL</div>
+        <div class="item" lang="ja">■ Kabuto One 4F Hall　2027.01.31 Sun</div>
+        <div class="item" lang="ja">■ Admission ¥2,200　Online Free</div>
+        <div class="item" lang="ja">■ Live on STOCKVOICE　12:00–18:00</div>
       </div>
     </div>
   </div>
@@ -297,11 +292,11 @@
       <div class="label"><span class="en h">Lineup</span><span class="ja">出演</span></div>
       <div class="body">
         <ul class="acts">
-          <li class="act"><div class="act-name" lang="ja">鈴木真明地</div><div class="act-members" lang="ja"><b>鈴木真明地 (Sax.)</b> ／ 伊東寿 (Pf.) ／ 吉武健治 (Ba.) ／ 後藤龍太郎 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">菊地立起</div><div class="act-members" lang="ja"><b>菊地立起 (Tp.)</b> ／ 布施音人 (Pf.) ／ 古木佳祐 (Ba.) ／ 中村海斗 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">窪田ひかり</div><div class="act-members" lang="ja"><b>窪田ひかり (Key.)</b> ／ メンバー後日発表</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">叶雅久</div><div class="act-members" lang="ja"><b>叶雅久 (Key.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 加藤一平 (Gt.) ／ 織原良次 (Ba.) ／ 片山晴翔 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">池田篤カルテット with 原朋直</div><div class="act-members" lang="ja"><b>池田篤 (As.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 池尻洋史 (Ba.) ／ 濱田省吾 (Drs.) ／ <b>原朋直 (Tp.)</b></div><span class="act-tag red">Special</span></li>
+          <li class="act"><div class="act-name" lang="ja">鈴木真明地</div><div class="act-members" lang="ja"><div class="lead">鈴木真明地 (Sax.)</div><div>伊東寿 (Pf.) ／ 吉武健治 (Ba.) ／ 後藤龍太郎 (Drs.)</div></div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">菊地立起</div><div class="act-members" lang="ja"><div class="lead">菊地立起 (Tp.)</div><div>布施音人 (Pf.) ／ 古木佳祐 (Ba.) ／ 中村海斗 (Drs.)</div></div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">窪田ひかり</div><div class="act-members" lang="ja"><div class="lead">窪田ひかり (Key.)</div><div>メンバー後日発表</div></div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">叶雅久</div><div class="act-members" lang="ja"><div class="lead">叶雅久 (Key.)</div><div>熊谷ヤスマサ (Pf.) ／ 加藤一平 (Gt.) ／ 織原良次 (Ba.) ／ 片山晴翔 (Drs.)</div></div><span class="act-tag">Session</span></li>
+          <li class="act"><div class="act-name" lang="ja">池田篤カルテット with 原朋直</div><div class="act-members" lang="ja"><div class="lead">池田篤 (As.)</div><div>熊谷ヤスマサ (Pf.) ／ 池尻洋史 (Ba.) ／ 濱田省吾 (Drs.) ／ 原朋直 (Tp.)</div></div><span class="act-tag red">Special</span></li>
         </ul>
         <p class="note">※出演者・メンバーは変更となる場合があります。</p>
       </div>
@@ -314,14 +309,14 @@
       <div class="label"><span class="en h">Program</span><span class="ja">プログラム</span></div>
       <div class="body">
         <div class="board" id="board">
-          <div class="row" data-t="12:00"><div class="flap" data-text="12:00"><span class="c">1</span><span class="c">2</span><span class="c">:</span><span class="c">0</span><span class="c">0</span></div><div class="flap wide" data-text="オープニング"><span class="c">オ</span><span class="c">ー</span><span class="c">プ</span><span class="c">ニ</span><span class="c">ン</span><span class="c">グ</span></div><span class="tag hot">Open</span></div>
-          <div class="row" data-t="12:10"><div class="flap" data-text="12:10"><span class="c">1</span><span class="c">2</span><span class="c">:</span><span class="c">1</span><span class="c">0</span></div><div class="flap wide" data-text="SESSION #1"><span class="c">S</span><span class="c">E</span><span class="c">S</span><span class="c">S</span><span class="c">I</span><span class="c">O</span><span class="c">N</span><span class="c sp"></span><span class="c">#</span><span class="c">1</span></div><span class="tag">Live</span></div>
-          <div class="row" data-t="13:10"><div class="flap" data-text="13:10"><span class="c">1</span><span class="c">3</span><span class="c">:</span><span class="c">1</span><span class="c">0</span></div><div class="flap wide" data-text="SESSION #2"><span class="c">S</span><span class="c">E</span><span class="c">S</span><span class="c">S</span><span class="c">I</span><span class="c">O</span><span class="c">N</span><span class="c sp"></span><span class="c">#</span><span class="c">2</span></div><span class="tag">Live</span></div>
-          <div class="row" data-t="14:10"><div class="flap" data-text="14:10"><span class="c">1</span><span class="c">4</span><span class="c">:</span><span class="c">1</span><span class="c">0</span></div><div class="flap wide" data-text="休憩"><span class="c">休</span><span class="c">憩</span></div><span class="tag">Break</span></div>
-          <div class="row" data-t="15:00"><div class="flap" data-text="15:00"><span class="c">1</span><span class="c">5</span><span class="c">:</span><span class="c">0</span><span class="c">0</span></div><div class="flap wide" data-text="SESSION #3"><span class="c">S</span><span class="c">E</span><span class="c">S</span><span class="c">S</span><span class="c">I</span><span class="c">O</span><span class="c">N</span><span class="c sp"></span><span class="c">#</span><span class="c">3</span></div><span class="tag">Live</span></div>
-          <div class="row" data-t="16:00"><div class="flap" data-text="16:00"><span class="c">1</span><span class="c">6</span><span class="c">:</span><span class="c">0</span><span class="c">0</span></div><div class="flap wide" data-text="SESSION #4"><span class="c">S</span><span class="c">E</span><span class="c">S</span><span class="c">S</span><span class="c">I</span><span class="c">O</span><span class="c">N</span><span class="c sp"></span><span class="c">#</span><span class="c">4</span></div><span class="tag">Live</span></div>
-          <div class="row" data-t="17:00"><div class="flap" data-text="17:00"><span class="c">1</span><span class="c">7</span><span class="c">:</span><span class="c">0</span><span class="c">0</span></div><div class="flap wide" data-text="SPECIAL PERFORMANCE"><span class="c">S</span><span class="c">P</span><span class="c">E</span><span class="c">C</span><span class="c">I</span><span class="c">A</span><span class="c">L</span><span class="c sp"></span><span class="c">P</span><span class="c">E</span><span class="c">R</span><span class="c">F</span><span class="c">O</span><span class="c">R</span><span class="c">M</span><span class="c">A</span><span class="c">N</span><span class="c">C</span><span class="c">E</span></div><span class="tag hot">Special</span></div>
-          <div class="row" data-t="18:00"><div class="flap" data-text="18:00"><span class="c">1</span><span class="c">8</span><span class="c">:</span><span class="c">0</span><span class="c">0</span></div><div class="flap wide" data-text="クロージング"><span class="c">ク</span><span class="c">ロ</span><span class="c">ー</span><span class="c">ジ</span><span class="c">ン</span><span class="c">グ</span></div><span class="tag">Close</span></div>
+          <div class="row" data-t="12:00"><div class="flap" data-text="12:00">12:00</div><div class="flap wide" data-text="オープニング">オープニング</div><span class="tag hot">Open</span></div>
+          <div class="row" data-t="12:10"><div class="flap" data-text="12:10">12:10</div><div class="flap wide" data-text="SESSION #1">SESSION #1</div><span class="tag">Live</span></div>
+          <div class="row" data-t="13:10"><div class="flap" data-text="13:10">13:10</div><div class="flap wide" data-text="SESSION #2">SESSION #2</div><span class="tag">Live</span></div>
+          <div class="row" data-t="14:10"><div class="flap" data-text="14:10">14:10</div><div class="flap wide" data-text="休憩">休憩</div><span class="tag">Break</span></div>
+          <div class="row" data-t="15:00"><div class="flap" data-text="15:00">15:00</div><div class="flap wide" data-text="SESSION #3">SESSION #3</div><span class="tag">Live</span></div>
+          <div class="row" data-t="16:00"><div class="flap" data-text="16:00">16:00</div><div class="flap wide" data-text="SESSION #4">SESSION #4</div><span class="tag">Live</span></div>
+          <div class="row" data-t="17:00"><div class="flap" data-text="17:00">17:00</div><div class="flap wide" data-text="SPECIAL PERFORMANCE">SPECIAL PERFORMANCE</div><span class="tag hot">Special</span></div>
+          <div class="row" data-t="18:00"><div class="flap" data-text="18:00">18:00</div><div class="flap wide" data-text="クロージング">クロージング</div><span class="tag">Close</span></div>
         </div>
         <p class="note" lang="ja">※プログラムの内容は予告なく変更となる可能性があります。各セッションの出演順は後日発表します。</p>
         <div class="people">
@@ -354,8 +349,8 @@
           <div class="way">
             <div class="hd"><b lang="ja">オンライン生配信で視聴する</b><span>Free</span></div>
             <div class="steps">
-              <div class="step"><div class="no">1<small>Step</small></div><div><b lang="ja">teketで「オンライン視聴チケット」を申し込む<span class="free">Free</span></b><p lang="ja">JazzEMP申込サイト（teket）からお申し込みください（無料）。</p><a class="btn" href="#" lang="ja">teketで申し込む</a></div></div>
-              <div class="step"><div class="no">2<small>Step</small></div><div><b lang="ja">STOCKVOICEにユーザー登録する<span class="free">Free</span></b><p lang="ja">配信サイト STOCKVOICE のユーザー登録（無料）を行ってください。開始時間になりましたらサインインの上、ライブ配信をご覧ください。</p><a class="btn ghost" href="#" lang="ja">STOCKVOICEに登録</a></div></div>
+              <div class="step"><div class="no">1<small>Step</small></div><div><b lang="ja">teketで「オンライン視聴チケット」を申し込む</b><span class="free">Free</span><p lang="ja">JazzEMP申込サイト（teket）からお申し込みください（無料）。</p><a class="btn" href="#" lang="ja">teketで申し込む</a></div></div>
+              <div class="step"><div class="no">2<small>Step</small></div><div><b lang="ja">STOCKVOICEにユーザー登録する</b><span class="free">Free</span><p lang="ja">配信サイト STOCKVOICE のユーザー登録（無料）を行ってください。開始時間になりましたらサインインの上、ライブ配信をご覧ください。</p><a class="btn ghost" href="#" lang="ja">STOCKVOICEに登録</a></div></div>
             </div>
           </div>
         </div>
@@ -412,7 +407,7 @@
       <div class="body">
         <ul class="news">
           <li><time datetime="2026-09-10">2026.09.10</time><p lang="ja">JAZZ EMP vol.9 の開催が決定。2027年1月31日（日）、KABUTO ONE 4F ホールにて。出演者・プログラムを公開しました。</p></li>
-          <li><time datetime="2025-11-01">2025</time><p lang="ja"><b>Music Cities Awards 受賞のお知らせ</b>　Jazzy Business Consulting(株)は、Sound DiplomacyおよびMusic Cities Eventsが主催する国際的なアワード「2025 Music Cities Awards」において、「Best Use of Music in Real Estate or City Planning」を受賞いたしました。兜町エリアでのJAZZへの取り組みや、JAZZTOMO♪というデジタルツールの活用が、音楽を都市の活性化や不動産価値の創出に結びつけたと高く評価され、日本企業として初めてノミネートされるに至りました。</p></li>
+          <li><time datetime="2025-11-01">2025</time><p lang="ja"><b style="display:block">Music Cities Awards 受賞のお知らせ</b>Jazzy Business Consulting(株)は、Sound DiplomacyおよびMusic Cities Eventsが主催する国際的なアワード「2025 Music Cities Awards」において、「Best Use of Music in Real Estate or City Planning」を受賞いたしました。兜町エリアでのJAZZへの取り組みや、JAZZTOMO♪というデジタルツールの活用が、音楽を都市の活性化や不動産価値の創出に結びつけたと高く評価され、日本企業として初めてノミネートされるに至りました。</p></li>
         </ul>
       </div>
     </div>
@@ -473,13 +468,7 @@
 
   const T0 = Date.UTC(2027, 0, 31, 3, 0, 0);
   const U = {}; ['d','h','m','s'].forEach(k => U[k] = document.querySelector(`[data-u="${k}"]`));
-  function setDigits(el, str) {
-    const sp = el.children;
-    for (let i = 0; i < sp.length; i++) if (sp[i].textContent !== str[i]) {
-      sp[i].textContent = str[i];
-      if (!RM) { sp[i].classList.remove('flip'); void sp[i].offsetWidth; sp[i].classList.add('flip'); }
-    }
-  }
+  function setDigits(el, str) { if (el.textContent !== str) el.textContent = str; }
   function tickCount() {
     let diff = Math.max(0, T0 - Date.now());
     const d = Math.floor(diff / 864e5); diff -= d * 864e5;
@@ -490,35 +479,20 @@
   }
   tickCount(); setInterval(tickCount, 1000);
 
-  // Wordmark: width follows the cursor while it is over the hero, otherwise rests at 100.
-  const letters = [...document.querySelectorAll('.wordmark .l')];
-  const hero = document.getElementById('hero');
-  let mx = -1, raf = 0;
-  function render() {
-    raf = 0;
-    letters.forEach(el => {
-      let w = 100;
-      if (mx >= 0) { const r = el.getBoundingClientRect(); const d = (r.left + r.width / 2 - mx) / (innerWidth * 0.14); w = 100 + 25 * Math.exp(-d * d); }
-      el.style.fontVariationSettings = `"wdth" ${w.toFixed(1)}`;
-    });
-  }
-  if (!RM) {
-    hero.addEventListener('pointermove', e => { mx = e.clientX; if (!raf) raf = requestAnimationFrame(render); }, { passive: true });
-    hero.addEventListener('pointerleave', () => { mx = -1; if (!raf) raf = requestAnimationFrame(render); });
-  }
 
   const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#:アイウエオカキクケコサシスセソタチツテトナニヌネノ';
   function settle(f, delay) {
     if (RM) return;
-    const cells = [...f.querySelectorAll('.c')], target = [...f.dataset.text], t0 = performance.now() + delay;
+    const target = [...(f.dataset.text || f.textContent)], t0 = performance.now() + delay;
     (function step(now) {
-      let done = true;
-      cells.forEach((c, i) => {
-        if (target[i] === ' ') return;
+      let done = true, out = '';
+      target.forEach((ch, i) => {
+        if (ch === ' ') { out += ' '; return; }
         const at = t0 + 350 + i * 45;
-        if (now < at) { done = false; if (now > t0 && Math.random() < 0.5) c.textContent = CH[(Math.random() * CH.length) | 0]; }
-        else c.textContent = target[i];
+        if (now < at) { done = false; out += (now > t0 && Math.random() < 0.5) ? CH[(Math.random() * CH.length) | 0] : ch; }
+        else out += ch;
       });
+      f.textContent = out;
       if (!done) requestAnimationFrame(step);
     })(performance.now());
   }
