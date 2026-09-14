@@ -221,9 +221,13 @@
   .label .en { writing-mode: horizontal-tb; position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
   .label .ja { writing-mode: horizontal-tb; text-orientation: mixed; position: absolute; left: 96px; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
 
-  .nav ul, .nav div.menu { display: flex; }
-  .way ol, .way div.steps-list { list-style: none; padding-left: 0; }
-  .notices div { padding-left: 0; text-indent: 0; }
+  .nav .wrap > div { display: flex; gap: 22px; align-items: center; }
+  .nav .wrap > div > div > a { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .venue > div { margin-top: 18px; border-top: 1px solid var(--rule); }
+  .venue > div > div { display: grid; grid-template-columns: 96px 1fr; gap: var(--gutter); padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: var(--jp); font-size: 14px; }
+  .news > div { display: grid; grid-template-columns: 120px 1fr; gap: var(--gutter); padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .notices > div { padding: 10px 0; border-bottom: 1px solid var(--hair); }
+  .notices > div::before { content: "＊"; color: var(--red); margin-right: .2em; }
 </style>
 </head>
 <body>

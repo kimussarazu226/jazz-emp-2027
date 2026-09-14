@@ -66,9 +66,13 @@ s = s.replace('</ul>', '</div>').replace('</ol>', '</div>')
 s = re.sub(r'<li([^>]*)>', r'<div\1>', s)
 s = s.replace('</li>', '</div>')
 s = s.replace('</style>', """
-  .nav ul, .nav div.menu { display: flex; }
-  .way ol, .way div.steps-list { list-style: none; padding-left: 0; }
-  .notices div { padding-left: 0; text-indent: 0; }
+  .nav .wrap > div { display: flex; gap: 22px; align-items: center; }
+  .nav .wrap > div > div > a { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .venue > div { margin-top: 18px; border-top: 1px solid var(--rule); }
+  .venue > div > div { display: grid; grid-template-columns: 96px 1fr; gap: var(--gutter); padding: 10px 0; border-bottom: 1px solid var(--hair); font-family: var(--jp); font-size: 14px; }
+  .news > div { display: grid; grid-template-columns: 120px 1fr; gap: var(--gutter); padding: 16px 0; border-bottom: 1px solid var(--hair); }
+  .notices > div { padding: 10px 0; border-bottom: 1px solid var(--hair); }
+  .notices > div::before { content: "\uff0a"; color: var(--red); margin-right: .2em; }
 </style>""", 1)
 open(os.path.join(HERE, "canva.html"), "w", encoding="utf-8").write(s)
 print("canva.html", len(s), "pages", s.count('data-document-role="page"'))
