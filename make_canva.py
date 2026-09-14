@@ -60,5 +60,15 @@ s = s.replace("</style>", """
   .label .ja { writing-mode: horizontal-tb; text-orientation: mixed; position: absolute; left: 96px; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
 </style>""", 1)
 
+# 8) lists -> plain blocks (Canva's importer turns <ul>/<ol>/<li> into bulleted list text)
+s = re.sub(r'<(ul|ol)([^>]*)>', r'<div\2>', s)
+s = s.replace('</ul>', '</div>').replace('</ol>', '</div>')
+s = re.sub(r'<li([^>]*)>', r'<div\1>', s)
+s = s.replace('</li>', '</div>')
+s = s.replace('</style>', """
+  .nav ul, .nav div.menu { display: flex; }
+  .way ol, .way div.steps-list { list-style: none; padding-left: 0; }
+  .notices div { padding-left: 0; text-indent: 0; }
+</style>""", 1)
 open(os.path.join(HERE, "canva.html"), "w", encoding="utf-8").write(s)
 print("canva.html", len(s), "pages", s.count('data-document-role="page"'))

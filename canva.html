@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JAZZ EMP vol.9</title>
 <meta name="description" content="金融のまち「日本橋兜町」に若手精鋭ミュージシャンが集う。JAZZ EMP vol.9 @TOKYO FINANCIAL STREET。2027年1月31日（日）12:00–18:00、KABUTO ONE 4Fホールにて開催。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<divnk rel="preconnect" href="https://fonts.googleapis.com">
+<divnk rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<divnk rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
   :root {
     --paper: #f3f1ea; --ink: #111111; --muted: #6d6a64; --rule: #111111; --hair: #d5d2ca;
@@ -220,6 +220,10 @@
   .label { display: block; position: relative; min-height: 360px; }
   .label .en { writing-mode: horizontal-tb; position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
   .label .ja { writing-mode: horizontal-tb; text-orientation: mixed; position: absolute; left: 96px; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
+
+  .nav ul, .nav div.menu { display: flex; }
+  .way ol, .way div.steps-list { list-style: none; padding-left: 0; }
+  .notices div { padding-left: 0; text-indent: 0; }
 </style>
 </head>
 <body>
@@ -227,15 +231,15 @@
 <header class="nav" data-document-role="page" data-label="Nav">
   <div class="wrap">
     <a class="brand" href="#top">Jazz Emp <i>9</i></a>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#lineup">Lineup</a></li>
-      <li><a href="#program">Program</a></li>
-      <li><a href="#ticket">Ticket</a></li>
-      <li><a href="#access">Access</a></li>
-      <li><a href="#news">News</a></li>
-      <li class="keep"><a class="cta" href="#ticket">Ticket</a></li>
-    </ul>
+    <div>
+      <div><a href="#about">About</a></div>
+      <div><a href="#lineup">Lineup</a></div>
+      <div><a href="#program">Program</a></div>
+      <div><a href="#ticket">Ticket</a></div>
+      <div><a href="#access">Access</a></div>
+      <div><a href="#news">News</a></div>
+      <div class="keep"><a class="cta" href="#ticket">Ticket</a></div>
+    </div>
   </div>
 </header>
 
@@ -282,18 +286,18 @@
     </div>
   </section>
 
-  <!-- ▼ LINEUP 出演者。1行 = 1組。<li class="act"> をコピーして増やす -->
+  <!-- ▼ LINEUP 出演者。1行 = 1組。<div class="act"> をコピーして増やす -->
   <section class="section" id="lineup" data-document-role="page" data-label="Lineup">
     <div class="wrap grid">
       <div class="label"><span class="en h">Lineup</span><span class="ja">出演</span></div>
       <div class="body">
-        <ul class="acts">
-          <li class="act"><div class="act-name" lang="ja">鈴木真明地</div><div class="act-members" lang="ja"><b>鈴木真明地 (Sax.)</b> ／ 伊東寿 (Pf.) ／ 吉武健治 (Ba.) ／ 後藤龍太郎 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">菊地立起</div><div class="act-members" lang="ja"><b>菊地立起 (Tp.)</b> ／ 布施音人 (Pf.) ／ 古木佳祐 (Ba.) ／ 中村海斗 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">窪田ひかり</div><div class="act-members" lang="ja"><b>窪田ひかり (Key.)</b> ／ メンバー後日発表</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">叶雅久</div><div class="act-members" lang="ja"><b>叶雅久 (Key.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 加藤一平 (Gt.) ／ 織原良次 (Ba.) ／ 片山晴翔 (Drs.)</div><span class="act-tag">Session</span></li>
-          <li class="act"><div class="act-name" lang="ja">池田篤カルテット with 原朋直</div><div class="act-members" lang="ja"><b>池田篤 (As.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 池尻洋史 (Ba.) ／ 濱田省吾 (Drs.) ／ <b>原朋直 (Tp.)</b></div><span class="act-tag red">Special</span></li>
-        </ul>
+        <div class="acts">
+          <div class="act"><div class="act-name" lang="ja">鈴木真明地</div><div class="act-members" lang="ja"><b>鈴木真明地 (Sax.)</b> ／ 伊東寿 (Pf.) ／ 吉武健治 (Ba.) ／ 後藤龍太郎 (Drs.)</div><span class="act-tag">Session</span></div>
+          <div class="act"><div class="act-name" lang="ja">菊地立起</div><div class="act-members" lang="ja"><b>菊地立起 (Tp.)</b> ／ 布施音人 (Pf.) ／ 古木佳祐 (Ba.) ／ 中村海斗 (Drs.)</div><span class="act-tag">Session</span></div>
+          <div class="act"><div class="act-name" lang="ja">窪田ひかり</div><div class="act-members" lang="ja"><b>窪田ひかり (Key.)</b> ／ メンバー後日発表</div><span class="act-tag">Session</span></div>
+          <div class="act"><div class="act-name" lang="ja">叶雅久</div><div class="act-members" lang="ja"><b>叶雅久 (Key.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 加藤一平 (Gt.) ／ 織原良次 (Ba.) ／ 片山晴翔 (Drs.)</div><span class="act-tag">Session</span></div>
+          <div class="act"><div class="act-name" lang="ja">池田篤カルテット with 原朋直</div><div class="act-members" lang="ja"><b>池田篤 (As.)</b> ／ 熊谷ヤスマサ (Pf.) ／ 池尻洋史 (Ba.) ／ 濱田省吾 (Drs.) ／ <b>原朋直 (Tp.)</b></div><span class="act-tag red">Special</span></div>
+        </div>
         <p class="note">※出演者・メンバーは変更となる場合があります。</p>
       </div>
     </div>
@@ -350,10 +354,10 @@
             </div>
           </div>
         </div>
-        <ul class="notices" style="margin-top:28px" lang="ja">
-          <li>視聴にあたっては、「本チケット購入」と「STOCKVOICEへのユーザー登録」の双方をお願いいたします。</li>
-          <li>「オンライン視聴チケット」では、KABUTO ONE会場にはご入場いただけません。</li>
-        </ul>
+        <div class="notices" style="margin-top:28px" lang="ja">
+          <div>視聴にあたっては、「本チケット購入」と「STOCKVOICEへのユーザー登録」の双方をお願いいたします。</div>
+          <div>「オンライン視聴チケット」では、KABUTO ONE会場にはご入場いただけません。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -367,11 +371,11 @@
           <div class="venue">
             <div class="name h">Kabuto One<small>4F Hall</small></div>
             <p class="addr" lang="ja">東京都中央区日本橋兜町7番1号　KABUTO ONE 4F ホール</p>
-            <ul>
-              <li><b>茅場町駅</b><span lang="ja">東京メトロ東西線 直結</span></li>
-              <li><b>日本橋駅</b><span lang="ja">東京メトロ銀座線・東西線、都営浅草線 D2出口 徒歩2分</span></li>
-              <li><b>東京駅</b><span lang="ja">JR線、東京メトロ丸ノ内線 八重洲北口 徒歩12分</span></li>
-            </ul>
+            <div>
+              <div><b>茅場町駅</b><span lang="ja">東京メトロ東西線 直結</span></div>
+              <div><b>日本橋駅</b><span lang="ja">東京メトロ銀座線・東西線、都営浅草線 D2出口 徒歩2分</span></div>
+              <div><b>東京駅</b><span lang="ja">JR線、東京メトロ丸ノ内線 八重洲北口 徒歩12分</span></div>
+            </div>
             <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=KABUTO+ONE+%E6%97%A5%E6%9C%AC%E6%A9%8B%E5%85%9C%E7%94%BA7-1" target="_blank" rel="noopener">Google Mapsで開く</a>
           </div>
           <div class="map">
@@ -387,11 +391,11 @@
     <div class="wrap grid">
       <div class="label"><span class="en h">Notice</span><span class="ja">ご来場にあたって</span></div>
       <div class="body">
-        <ul class="notices" lang="ja">
-          <li>会場には駐車場のご用意がありません。ご来場の際は公共交通機関をお使いください。</li>
-          <li>当日、ホワイエにて軽食・飲み物の販売を予定しています。現金決済には対応しておりませんので、クレジットカード、各種電子マネーでお支払いください。</li>
-          <li>ホワイエでご購入されたもの以外の飲食物のお持ち込みはお控えください。</li>
-        </ul>
+        <div class="notices" lang="ja">
+          <div>会場には駐車場のご用意がありません。ご来場の際は公共交通機関をお使いください。</div>
+          <div>当日、ホワイエにて軽食・飲み物の販売を予定しています。現金決済には対応しておりませんので、クレジットカード、各種電子マネーでお支払いください。</div>
+          <div>ホワイエでご購入されたもの以外の飲食物のお持ち込みはお控えください。</div>
+        </div>
       </div>
     </div>
   </section>
@@ -401,10 +405,10 @@
     <div class="wrap grid">
       <div class="label"><span class="en h">News</span><span class="ja">お知らせ</span></div>
       <div class="body">
-        <ul class="news">
-          <li><time datetime="2026-09-10">2026.09.10</time><p lang="ja">JAZZ EMP vol.9 の開催が決定。2027年1月31日（日）、KABUTO ONE 4F ホールにて。出演者・プログラムを公開しました。</p></li>
-          <li><time datetime="2025-11-01">2025</time><p lang="ja"><b>Music Cities Awards 受賞のお知らせ</b>　Jazzy Business Consulting(株)は、Sound DiplomacyおよびMusic Cities Eventsが主催する国際的なアワード「2025 Music Cities Awards」において、「Best Use of Music in Real Estate or City Planning」を受賞いたしました。兜町エリアでのJAZZへの取り組みや、JAZZTOMO♪というデジタルツールの活用が、音楽を都市の活性化や不動産価値の創出に結びつけたと高く評価され、日本企業として初めてノミネートされるに至りました。</p></li>
-        </ul>
+        <div class="news">
+          <div><time datetime="2026-09-10">2026.09.10</time><p lang="ja">JAZZ EMP vol.9 の開催が決定。2027年1月31日（日）、KABUTO ONE 4F ホールにて。出演者・プログラムを公開しました。</p></div>
+          <div><time datetime="2025-11-01">2025</time><p lang="ja"><b>Music Cities Awards 受賞のお知らせ</b>　Jazzy Business Consulting(株)は、Sound DiplomacyおよびMusic Cities Eventsが主催する国際的なアワード「2025 Music Cities Awards」において、「Best Use of Music in Real Estate or City Planning」を受賞いたしました。兜町エリアでのJAZZへの取り組みや、JAZZTOMO♪というデジタルツールの活用が、音楽を都市の活性化や不動産価値の創出に結びつけたと高く評価され、日本企業として初めてノミネートされるに至りました。</p></div>
+        </div>
       </div>
     </div>
   </section>
