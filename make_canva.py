@@ -54,6 +54,10 @@ s = s.replace("</style>", """
   .tt-time { font-weight: 800; font-size: 22px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .tt-what { font-family: var(--jp); font-weight: 700; font-size: 20px; }
   .wordmark .l { font-variation-settings: normal; }
+  /* vertical section labels: plain horizontal text rotated -90 so Canva keeps it as one rotated text box */
+  .label { display: block; position: relative; min-height: 360px; }
+  .label .en { writing-mode: horizontal-tb; position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
+  .label .ja { writing-mode: horizontal-tb; text-orientation: mixed; position: absolute; left: 96px; top: 0; white-space: nowrap; transform-origin: left top; transform: rotate(-90deg) translate(-100%, 0); }
 </style>""", 1)
 
 open(os.path.join(HERE, "canva.html"), "w", encoding="utf-8").write(s)
