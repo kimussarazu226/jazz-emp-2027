@@ -24,6 +24,7 @@
   .unit .u { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
   /* ▼ 開演中「LIVE NOW」／終演後「THANK YOU」の表示 */
   .state { display: flex; align-items: center; gap: 14px; }
+  .state[hidden] { display: none; } /* class指定がUAの[hidden]を上書きするのを防ぐ（3段階の出し分け） */
   .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--black); animation: pulse 1.1s ease-in-out infinite; }
   @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .2; transform: scale(.65); } }
   .big { font-weight: 800; font-size: 26px; line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; }
