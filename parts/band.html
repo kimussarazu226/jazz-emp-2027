@@ -68,13 +68,13 @@
     <div class="track" id="track">
       <!-- ▼ 流れる文字。1行＝1項目。ここを直す -->
       <span class="item" lang="ja">▲ 鈴木真明地　SAX</span>
-      <span class="item" lang="ja">▲ 菊地立起　TP</span>
       <span class="item" lang="ja">▲ 窪田ひかり　KEY</span>
+      <span class="item" lang="ja">▲ 菊地立起　TP</span>
       <span class="item" lang="ja">▲ 叶雅久　KEY</span>
       <span class="item" lang="ja">▲ 池田篤カルテット with 原朋直　SPECIAL</span>
       <span class="item">■ Kabuto One 4F Hall　2027.01.31 Sun</span>
-      <span class="item">■ Admission ¥2,200　Online Free</span>
-      <span class="item">■ Live on STOCKVOICE　12:00–18:00</span>
+      <span class="item">■ Admission ¥2,500 / ¥3,000　Online Free</span>
+      <span class="item">■ Live on STOCKVOICE &amp; YouTube　11:00–17:30</span>
     </div>
   </div>
 </div>
@@ -82,8 +82,8 @@
 (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const track = document.getElementById('track'); track.innerHTML += track.innerHTML;
-  const T0 = Date.UTC(2027, 0, 31, 3, 0, 0); // 2027-01-31 12:00 JST  開演  ← 変える時はここ
-  const T1 = Date.UTC(2027, 0, 31, 9, 0, 0); // 2027-01-31 18:00 JST  終演  ← 変える時はここ
+  const T0 = Date.UTC(2027, 0, 31, 2, 0, 0); // 2027-01-31 11:00 JST  開演  ← 変える時はここ
+  const T1 = Date.UTC(2027, 0, 31, 8, 30, 0); // 2027-01-31 17:30 JST  終演  ← 変える時はここ
   const pre = document.getElementById('pre'), live = document.getElementById('live'), ended = document.getElementById('ended');
   const U = {}; ['d','h','m','s'].forEach(k => U[k] = document.querySelector(`[data-u="${k}"]`));
   function setDigits(el, str) {

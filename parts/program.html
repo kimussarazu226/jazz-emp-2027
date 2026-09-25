@@ -25,20 +25,20 @@
   .cast .mem { font-family: "Noto Sans JP", sans-serif; font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; line-height: 1.7; margin-top: 3px; }
   .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: .35em; }
   .tag.hot { color: var(--red); }
-  .note { font-family: "Noto Sans JP", sans-serif; font-size: 12px; color: var(--muted); margin-top: 14px; letter-spacing: 0.04em; }
+  .note { font-family: "Noto Sans JP", sans-serif; font-size: 12px; color: var(--muted); margin-top: 14px; letter-spacing: 0.04em; line-height: 1.7; }
   @media (max-width: 640px) { .row { grid-template-columns: auto 1fr; } .tag { grid-column: 2; padding-top: 6px; } }
 </style>
 </head>
 <body>
 <div class="board" id="board">
-  <!-- ▼ 時間割。data-text＝フラップ。.cast＝出演者（静的）。出演順を変える時はブロックごと入れ替え -->
+  <!-- ▼ 時間割。data-text＝フラップ。.cast＝出演者（静的）。出演順を変える時はブロックごと入れ替え。2部制・各セッション約45分 -->
   <div class="row">
-    <div class="flap time" data-text="12:00"></div>
+    <div class="flap time" data-text="11:00"></div>
     <div><div class="flap wide" data-text="オープニング"></div></div>
     <span class="tag hot">Open</span>
   </div>
   <div class="row">
-    <div class="flap time" data-text="12:10"></div>
+    <div class="flap time" data-text="11:10"></div>
     <div>
       <div class="flap wide" data-text="SESSION #1"></div>
       <div class="cast">
@@ -49,9 +49,25 @@
     <span class="tag">Live</span>
   </div>
   <div class="row">
-    <div class="flap time" data-text="13:10"></div>
+    <div class="flap time" data-text="12:10"></div>
     <div>
       <div class="flap wide" data-text="SESSION #2"></div>
+      <div class="cast">
+        <div class="act">窪田ひかり</div>
+        <div class="mem">窪田ひかり (Key.)／華波 (Sax.)／椿拓朗 (Ba.)／窪田大志 (Drs.)</div>
+      </div>
+    </div>
+    <span class="tag">Live</span>
+  </div>
+  <div class="row">
+    <div class="flap time" data-text="13:00"></div>
+    <div><div class="flap wide" data-text="休憩"></div></div>
+    <span class="tag">Break</span>
+  </div>
+  <div class="row">
+    <div class="flap time" data-text="14:00"></div>
+    <div>
+      <div class="flap wide" data-text="SESSION #3"></div>
       <div class="cast">
         <div class="act">菊地立起</div>
         <div class="mem">菊地立起 (Tp.)／布施音人 (Pf.)／古木佳祐 (Ba.)／中村海斗 (Drs.)</div>
@@ -60,23 +76,7 @@
     <span class="tag">Live</span>
   </div>
   <div class="row">
-    <div class="flap time" data-text="14:10"></div>
-    <div><div class="flap wide" data-text="休憩"></div></div>
-    <span class="tag">Break</span>
-  </div>
-  <div class="row">
     <div class="flap time" data-text="15:00"></div>
-    <div>
-      <div class="flap wide" data-text="SESSION #3"></div>
-      <div class="cast">
-        <div class="act">窪田ひかり</div>
-        <div class="mem">窪田ひかり (Key.)／メンバー後日発表</div>
-      </div>
-    </div>
-    <span class="tag">Live</span>
-  </div>
-  <div class="row">
-    <div class="flap time" data-text="16:00"></div>
     <div>
       <div class="flap wide" data-text="SESSION #4"></div>
       <div class="cast">
@@ -87,7 +87,12 @@
     <span class="tag">Live</span>
   </div>
   <div class="row">
-    <div class="flap time" data-text="17:00"></div>
+    <div class="flap time" data-text="15:55"></div>
+    <div><div class="flap wide" data-text="休憩"></div></div>
+    <span class="tag">Break</span>
+  </div>
+  <div class="row">
+    <div class="flap time" data-text="16:10"></div>
     <div>
       <div class="flap wide" data-text="SPECIAL"></div>
       <div class="cast">
@@ -98,12 +103,22 @@
     <span class="tag hot">Special</span>
   </div>
   <div class="row">
-    <div class="flap time" data-text="18:00"></div>
-    <div><div class="flap wide" data-text="クロージング"></div></div>
+    <div class="flap time" data-text="16:55"></div>
+    <div>
+      <div class="flap wide" data-text="JAM SESSION"></div>
+      <div class="cast">
+        <div class="act">出演者によるジャム・セッション</div>
+      </div>
+    </div>
+    <span class="tag hot">Jam</span>
+  </div>
+  <div class="row">
+    <div class="flap time" data-text="17:25"></div>
+    <div><div class="flap wide" data-text="終演"></div></div>
     <span class="tag">Close</span>
   </div>
 </div>
-<p class="note">※プログラムの内容は予告なく変更となる可能性があります。各セッションの出演順は後日発表します。</p>
+<p class="note">※2部制・各セッション約45分。開場 10:30／開演 11:00／終演予定 17:25。プログラム・時間は予告なく変更となる場合があります。</p>
 <script>
 (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
